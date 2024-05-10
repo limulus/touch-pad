@@ -1,0 +1,25 @@
+name: Continuous Delivery
+
+on: push
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: bash .github/workflows/set-up-ci.sh
+      - run: npm ci
+      - run: npm run verify
+      - uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: coverage (node v${{ matrix.node }})
+          path: coverage/
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
