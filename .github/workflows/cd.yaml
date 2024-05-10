@@ -16,7 +16,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
-          name: coverage (node v${{ matrix.node }})
+          name: coverage
           path: coverage/
       - run: npx semantic-release
         env:
