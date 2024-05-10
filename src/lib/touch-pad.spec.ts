@@ -1,4 +1,4 @@
-import { expect } from '@wdio/globals'
+import { describe, expect, it, beforeEach, afterEach } from 'vitest'
 
 import { TouchPad, TouchPadMoveEvent } from './touch-pad.js'
 
