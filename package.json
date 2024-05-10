@@ -1,0 +1,71 @@
+{
+  "name": "touch-pad",
+  "version": "1.0.0",
+  "description": "A web component to track drags and touches",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "concurrently -c auto 'npm:build:*'",
+    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs",
+    "build:dts": "tsc -p tsconfig.build.json --declaration --declarationMap --emitDeclarationOnly --outDir dist/types",
+    "build:esm": "tsc -p tsconfig.build.json --outDir dist/esm",
+    "build:cjs:pkg": "mkdirp dist/cjs && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "clean": "del *.tsbuildinfo coverage dist",
+    "lint": "eslint *.js src",
+    "prepack": "npm run build",
+    "prepare": "is-ci || husky install",
+    "test": "echo 'needs tests' && exit 1",
+    "tscc": "tsc --noEmit",
+    "verify": "concurrently -c cyan,magenta,blue npm:lint npm:test npm:tscc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limulus/touch-pad.git"
+  },
+  "author": {
+    "name": "Eric McCarthy",
+    "email": "eric@limulus.net",
+    "url": "https://limulus.net/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/limulus/touch-pad/issues"
+  },
+  "homepage": "https://github.com/limulus/touch-pad#readme",
+  "dependencies": {
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "@limulus/eslint-config": "^5.0.0",
+    "@wdio/browser-runner": "^8.36.1",
+    "@wdio/browserstack-service": "^8.36.1",
+    "@wdio/cli": "^8.36.1",
+    "@wdio/mocha-framework": "^8.36.1",
+    "@wdio/spec-reporter": "^8.36.1",
+    "concurrently": "^8.2.2",
+    "del-cli": "^5.1.0",
+    "eslint": "^8.52.0",
+    "husky": "^8.0.3",
+    "is-ci": "^3.0.1",
+    "mkdirp": "^3.0.1",
+    "semantic-release": "^22.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.2.2",
+    "webdriverio": "^8.36.1"
+  }
+}
