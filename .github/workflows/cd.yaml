@@ -11,7 +11,6 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: bash .github/workflows/set-up-ci.sh
       - run: npm ci
       - run: npm run verify
       - uses: actions/upload-artifact@v4
