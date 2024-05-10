@@ -54,23 +54,14 @@
     "@limulus/eslint-config": "^5.0.0",
     "@vitest/browser": "^1.6.0",
     "@vitest/coverage-istanbul": "^1.6.0",
-    "@wdio/browser-runner": "^8.36.1",
-    "@wdio/browserstack-service": "^8.36.1",
-    "@wdio/cli": "^8.36.1",
-    "@wdio/mocha-framework": "^8.36.1",
-    "@wdio/spec-reporter": "^8.36.1",
     "concurrently": "^8.2.2",
     "del-cli": "^5.1.0",
     "eslint": "^8.52.0",
-    "happy-dom": "^14.10.1",
     "husky": "^8.0.3",
     "is-ci": "^3.0.1",
-    "jsdom": "^24.0.0",
     "mkdirp": "^3.0.1",
     "semantic-release": "^22.0.5",
-    "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
-    "vitest": "^1.6.0",
-    "webdriverio": "^8.36.1"
+    "vitest": "^1.6.0"
   }
 }
