@@ -4,11 +4,11 @@ Track drags and touches on an element, a bit like a touchpad or trackpad.
 
 ## Demo
 
-The best way to understand how `touch-pad` works is to [see it in action]. Click and drag
-(or touch and drag) on the demo element to move the light source and change the sphere's
-shadow.
+<video width="720" height="410" src="https://github.com/limulus/touch-pad/assets/609858/95624937-b0b0-4f22-ac14-b46465a37e74" />
 
-[see it in action]: https://limulus.net/penumbra/journal/005-ray-sphere-interactions/#demo
+The best way to understand how `touch-pad` works is to [try it].
+
+[try it]: https://limulus.net/penumbra/journal/005-ray-sphere-interactions/#demo
 
 ## Installation
 
