@@ -10,7 +10,7 @@ The best way to understand how `touch-pad` works is to [try it]. Or check out th
 
 <details>
   <summary>Video Demo</summary>
-  <video src="https://github.com/limulus/touch-pad/assets/609858/95624937-b0b0-4f22-ac14-b46465a37e74"></video>
+  <video src="https://github.com/limulus/touch-pad/assets/609858/95624937-b0b0-4f22-ac14-b46465a37e74" autoplay loop muted inline width="720" height="405"></video>
 </details>
 
 ## Installation
