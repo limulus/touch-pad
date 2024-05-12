@@ -391,7 +391,7 @@ describe('TouchPad', () => {
     })
   })
 
-  describe('detach()', () => {
+  describe('unlisten()', () => {
     it('should cause it to stop emitting events', () => {
       const events: TouchPadMoveEvent[] = []
       target.addEventListener('touchpadmove', (event) => {
