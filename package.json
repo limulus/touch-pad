@@ -1,7 +1,7 @@
 {
   "name": "touch-pad",
   "version": "1.0.0",
-  "description": "A web component to track drags and touches",
+  "description": "Track drags and touches on an element, a bit like a touchpad or trackpad",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "exports": {
