@@ -4,11 +4,14 @@ Track drags and touches on an element, a bit like a touchpad or trackpad.
 
 ## Demo
 
-<video width="720" height="410" src="https://github.com/limulus/touch-pad/assets/609858/95624937-b0b0-4f22-ac14-b46465a37e74" />
-
-The best way to understand how `touch-pad` works is to [try it].
+The best way to understand how `touch-pad` works is to [try it]. Or check out the video below.
 
 [try it]: https://limulus.net/penumbra/journal/005-ray-sphere-interactions/#demo
+
+<details>
+  <summary>Video Demo</summary>
+  <video src="https://github.com/limulus/touch-pad/assets/609858/95624937-b0b0-4f22-ac14-b46465a37e74"></video>
+</details>
 
 ## Installation
 
