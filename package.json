@@ -4,11 +4,18 @@
   "description": "A web component to track drags and touches",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./define": {
+      "types": "./dist/types/define.d.ts",
+      "import": "./dist/esm/define.js",
+      "require": "./dist/cjs/define.js",
+      "default": "./dist/esm/define.js"
     }
   },
   "files": [
@@ -22,7 +29,7 @@
     "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs",
     "build:dts": "tsc -p tsconfig.build.json --declaration --declarationMap --emitDeclarationOnly --outDir dist/types",
     "build:esm": "tsc -p tsconfig.build.json --outDir dist/esm",
-    "build:cjs:pkg": "mkdirp dist/cjs && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "postbuild:cjs": "echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
     "clean": "del *.tsbuildinfo coverage dist",
     "lint": "eslint *.ts src",
     "prepack": "npm run build",

@@ -21,7 +21,3 @@ export class TouchPad extends HTMLElement {
     this.eventProcessor.unlisten()
   }
 }
-
-if (!customElements.get('touch-pad')) {
-  customElements.define('touch-pad', TouchPad)
-}

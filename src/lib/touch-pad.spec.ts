@@ -6,6 +6,7 @@ import { TouchPad } from './touch-pad.js'
 describe('TouchPad', () => {
   beforeAll(async () => {
     await import('./touch-pad.js')
+    customElements.define('touch-pad', TouchPad)
   })
 
   let container: HTMLDivElement

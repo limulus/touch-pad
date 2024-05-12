@@ -6,7 +6,7 @@
     "isolatedModules": true,
     "jsx": "react",
     "module": "es2022",
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
