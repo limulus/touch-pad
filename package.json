@@ -26,7 +26,7 @@
   "scripts": {
     "prebuild": "npm run clean",
     "build": "concurrently -c auto 'npm:build:*'",
-    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs",
+    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --moduleResolution node --outDir dist/cjs",
     "build:dts": "tsc -p tsconfig.build.json --declaration --declarationMap --emitDeclarationOnly --outDir dist/types",
     "build:esm": "tsc -p tsconfig.build.json --outDir dist/esm",
     "postbuild:cjs": "echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
