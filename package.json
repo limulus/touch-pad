@@ -1,0 +1,75 @@
+{
+  "name": "touch-pad",
+  "version": "1.0.0",
+  "description": "Track drags and touches on an element, a bit like a touchpad or trackpad",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./define": {
+      "types": "./dist/types/define.d.ts",
+      "import": "./dist/esm/define.js",
+      "require": "./dist/cjs/define.js",
+      "default": "./dist/esm/define.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "concurrently -c auto 'npm:build:*'",
+    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs",
+    "build:dts": "tsc -p tsconfig.build.json --declaration --declarationMap --emitDeclarationOnly --outDir dist/types",
+    "build:esm": "tsc -p tsconfig.build.json --outDir dist/esm",
+    "postbuild:cjs": "echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "clean": "del *.tsbuildinfo coverage dist",
+    "lint": "eslint *.ts src",
+    "prepack": "npm run build",
+    "prepare": "is-ci || husky",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "tscc": "tsc --noEmit",
+    "verify": "concurrently -c cyan,magenta,blue npm:lint npm:test npm:tscc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limulus/touch-pad.git"
+  },
+  "author": {
+    "name": "Eric McCarthy",
+    "email": "eric@limulus.net",
+    "url": "https://limulus.net/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/limulus/touch-pad/issues"
+  },
+  "homepage": "https://github.com/limulus/touch-pad#readme",
+  "dependencies": {
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "@limulus/eslint-config": "^5.0.0",
+    "@vitest/browser": "^1.6.0",
+    "@vitest/coverage-istanbul": "^1.6.0",
+    "concurrently": "^8.2.2",
+    "del-cli": "^5.1.0",
+    "eslint": "^8.52.0",
+    "husky": "^9.0.11",
+    "is-ci": "^3.0.1",
+    "mkdirp": "^3.0.1",
+    "semantic-release": "^22.0.5",
+    "typescript": "^5.2.2",
+    "vitest": "^1.6.0"
+  }
+}
