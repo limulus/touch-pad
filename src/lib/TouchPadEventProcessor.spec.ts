@@ -406,9 +406,9 @@ describe('TouchPad', () => {
       container.shadowRoot!.appendChild(target)
     })
 
-    it('should still emit events', () => {
+    it('should emit events beyond the shadow root', () => {
       const events: TouchPadMoveEvent[] = []
-      target.addEventListener('touchpadmove', (event) => {
+      document.body.addEventListener('touchpadmove', (event) => {
         events.push(event as TouchPadMoveEvent)
       })
 

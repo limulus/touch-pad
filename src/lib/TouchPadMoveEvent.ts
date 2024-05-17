@@ -19,7 +19,7 @@ export class TouchPadMoveEvent extends CustomEvent<TouchPadMoveEventDetails> {
     const x = (coords.clientX - rect.left) / rect.width
     const y = (coords.clientY - rect.top) / rect.height
 
-    super('touchpadmove', { detail: { x, y } })
+    super('touchpadmove', { bubbles: true, composed: true, detail: { x, y } })
 
     this.target = target
     this.originalEvent = event
