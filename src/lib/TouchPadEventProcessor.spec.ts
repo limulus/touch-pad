@@ -5,10 +5,12 @@ import { TouchPadMoveEvent } from './TouchPadMoveEvent.js'
 
 describe('TouchPad', () => {
   let target: HTMLDivElement
+  let targetChild: HTMLDivElement
   let touchPad: TouchPadEventProcessor
 
   beforeEach(() => {
     target = document.createElement('div')
+    target.appendChild((targetChild = document.createElement('div')))
     target.style.position = 'absolute'
     target.style.top = '20px'
     target.style.left = '20px'
@@ -32,35 +34,35 @@ describe('TouchPad', () => {
       })
 
       const rect = target.getBoundingClientRect()
-      target.dispatchEvent(
+      targetChild.dispatchEvent(
         new MouseEvent('mousedown', {
           clientX: 0 + rect.left,
           clientY: 0 + rect.top,
           bubbles: true,
         })
       )
-      target.dispatchEvent(
+      targetChild.dispatchEvent(
         new MouseEvent('mousemove', {
           clientX: 10 + rect.left,
           clientY: 10 + rect.top,
           bubbles: true,
         })
       )
-      target.dispatchEvent(
+      targetChild.dispatchEvent(
         new MouseEvent('mousemove', {
           clientX: 20 + rect.left,
           clientY: 20 + rect.top,
           bubbles: true,
         })
       )
-      target.dispatchEvent(
+      targetChild.dispatchEvent(
         new MouseEvent('mouseup', {
           clientX: 20 + rect.left,
           clientY: 20 + rect.top,
           bubbles: true,
         })
       )
-      target.dispatchEvent(
+      targetChild.dispatchEvent(
         new MouseEvent('mousemove', {
           clientX: 30 + rect.left,
           clientY: 30 + rect.top,
@@ -124,28 +126,32 @@ describe('TouchPad', () => {
 
       const identifier = genId()
 
-      target.dispatchEvent(
+      targetChild.dispatchEvent(
         new TouchEvent('touchstart', {
-          touches: [createTouch(identifier, target, 0, 0)],
-          changedTouches: [createTouch(identifier, target, 0, 0)],
+          touches: [createTouch(identifier, targetChild, 0, 0)],
+          changedTouches: [createTouch(identifier, targetChild, 0, 0)],
+          bubbles: true,
         })
       )
-      target.dispatchEvent(
+      targetChild.dispatchEvent(
         new TouchEvent('touchmove', {
-          touches: [createTouch(identifier, target, 10, 10)],
-          changedTouches: [createTouch(identifier, target, 10, 10)],
+          touches: [createTouch(identifier, targetChild, 10, 10)],
+          changedTouches: [createTouch(identifier, targetChild, 10, 10)],
+          bubbles: true,
         })
       )
-      target.dispatchEvent(
+      targetChild.dispatchEvent(
         new TouchEvent('touchmove', {
-          touches: [createTouch(identifier, target, 20, 20)],
-          changedTouches: [createTouch(identifier, target, 20, 20)],
+          touches: [createTouch(identifier, targetChild, 20, 20)],
+          changedTouches: [createTouch(identifier, targetChild, 20, 20)],
+          bubbles: true,
         })
       )
-      target.dispatchEvent(
+      targetChild.dispatchEvent(
         new TouchEvent('touchend', {
-          touches: [createTouch(identifier, target, 20, 20)],
-          changedTouches: [createTouch(identifier, target, 20, 20)],
+          touches: [createTouch(identifier, targetChild, 20, 20)],
+          changedTouches: [createTouch(identifier, targetChild, 20, 20)],
+          bubbles: true,
         })
       )
 

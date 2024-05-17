@@ -52,9 +52,10 @@ describe('TouchPad', () => {
       const event3 = new MouseEvent('mouseup', { clientX: 20, clientY: 20, bubbles: true })
       canvas.dispatchEvent(event3)
 
-      expect(touchPadMoveEvents).toHaveLength(1)
+      expect(touchPadMoveEvents).toHaveLength(2)
       expect(touchPadMoveEvents[0].detail).toEqual({ x: 0.1, y: 0.1 })
       expect(touchPadMoveEvents[0].target).toBe(touchPad)
+      expect(touchPadMoveEvents[1].detail).toEqual({ x: 0.2, y: 0.2 })
     })
 
     it('should stop emitting "touchpadmove" events when the element is removed', () => {

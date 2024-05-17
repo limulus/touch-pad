@@ -16,7 +16,7 @@ export class TouchPadEventProcessor implements EventListenerObject {
   }
 
   handleEvent(event: MouseEvent | TouchEvent) {
-    if (event.target === this.source) {
+    if (event.composedPath().includes(this.source)) {
       if (event instanceof MouseEvent && event.type === 'mousedown') {
         if (event.button !== 0) return
         this.source.ownerDocument!.addEventListener('mousemove', this)
