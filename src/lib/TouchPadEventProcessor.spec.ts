@@ -397,6 +397,52 @@ describe('TouchPad', () => {
     })
   })
 
+  describe('when the source element is inside a shadow root', () => {
+    beforeEach(() => {
+      target.remove()
+      const container = document.createElement('custom-element')
+      document.body.appendChild(container)
+      container.attachShadow({ mode: 'open' })
+      container.shadowRoot!.appendChild(target)
+    })
+
+    it('should still emit events', () => {
+      const events: TouchPadMoveEvent[] = []
+      target.addEventListener('touchpadmove', (event) => {
+        events.push(event as TouchPadMoveEvent)
+      })
+
+      const rect = target.getBoundingClientRect()
+      targetChild.dispatchEvent(
+        new MouseEvent('mousedown', {
+          clientX: 0 + rect.left,
+          clientY: 0 + rect.top,
+          bubbles: true,
+          composed: true,
+        })
+      )
+      targetChild.dispatchEvent(
+        new MouseEvent('mousemove', {
+          clientX: 10 + rect.left,
+          clientY: 10 + rect.top,
+          bubbles: true,
+          composed: true,
+        })
+      )
+      targetChild.dispatchEvent(
+        new MouseEvent('mouseup', {
+          clientX: 20 + rect.left,
+          clientY: 20 + rect.top,
+          bubbles: true,
+        })
+      )
+
+      expect(events.length).toBe(2)
+      expect(events[0].detail).toEqual({ x: 0, y: 0 })
+      expect(events[1].detail).toEqual({ x: 10 / 100, y: 10 / 100 })
+    })
+  })
+
   describe('unlisten()', () => {
     it('should cause it to stop emitting events', () => {
       const events: TouchPadMoveEvent[] = []
